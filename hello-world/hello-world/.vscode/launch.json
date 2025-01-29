@@ -1,0 +1,68 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome Debug HTML - Current File",
+            "file": "${file}",
+            "webRoot": "${workspaceFolder}", // The root folder of your project
+            "runtimeExecutable": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ]
+        },
+        {
+            "type": "node",
+            "name": "node - current file",
+            "program": "${file}",
+            "request": "launch",
+            "skipFiles": ["<node_internals>/**"],
+            "outFiles": ["${workspaceFolder}/**/*.js"],
+            "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
+            "outputCapture": "std",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "jest - run unit tests",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": ["test"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "jest - run test coverage report",
+            "type": "node",
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "args": ["run", "coverage"],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "chrome debug localhost",
+            "url": "http://localhost:8000",
+            "webRoot": "${workspaceFolder}",  // Same as above
+            "runtimeExecutable": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ]
+        },
+        {
+            "type": "node",
+            "name": "chrome debug jest tests",
+            "request": "launch",
+            "runtimeArgs": [
+                "--inspect-brk",
+                "${workspaceRoot}/node_modules/jest/bin/jest.js",
+                "--runInBand"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ]
+}
